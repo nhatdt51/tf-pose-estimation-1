@@ -27,6 +27,7 @@ REQUIRED_PACKAGES = [
     'scipy >= 1.1.0',
     'slidingwindow >= 0.0.13',
     'tqdm >= 4.23.4',
+    'tensorflow < 2.0',
     'tensorpack >= 0.8.5',
     'pycocotools'
 ]

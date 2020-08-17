@@ -5,7 +5,9 @@ from __future__ import print_function
 import os
 import subprocess
 import setuptools
+from setuptools import dist
 from distutils.core import setup, Extension
+dist.Distribution().fetch_build_eggs(['Cython', 'numpy'])
 
 import numpy as np
 

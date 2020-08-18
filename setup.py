@@ -7,8 +7,6 @@ import subprocess
 import setuptools
 from setuptools import dist
 from distutils.core import setup, Extension
-
-from tf_pose import __version__
 dist.Distribution().fetch_build_eggs(['Cython', 'numpy'])
 import numpy as np
 
@@ -47,7 +45,7 @@ EXT = Extension('_pafprocess',
 
 setuptools.setup(
     name='tf_pose',
-    version=__version__,
+    version="0.2.0",
     description=
     'Deep Pose Estimation implemented using Tensorflow with Custom Architectures for fast inference.',
     install_requires=REQUIRED_PACKAGES,

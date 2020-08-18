@@ -7,16 +7,13 @@ import subprocess
 import setuptools
 from setuptools import dist
 from distutils.core import setup, Extension
+
 from tf_pose import __version__
 dist.Distribution().fetch_build_eggs(['Cython', 'numpy'])
-
 import numpy as np
-
-
 
 cwd = os.path.dirname(os.path.abspath(__file__))
 subprocess.check_output(["bash", "models/graph/cmu/download.sh"], cwd=cwd)
-
 POSE_DIR = os.path.realpath(os.path.dirname(__file__))
 
 REQUIRED_PACKAGES = [
@@ -29,6 +26,7 @@ REQUIRED_PACKAGES = [
     'scikit-image >= 0.13.1',
     'scipy >= 1.1.0',
     'slidingwindow >= 0.0.13',
+    "opencv-python",
     'tqdm >= 4.23.4',
     'tensorflow < 2.0',
     'tensorpack >= 0.8.5',
@@ -48,7 +46,7 @@ EXT = Extension('_pafprocess',
                 include_dirs=[np.get_include()])
 
 setuptools.setup(
-    name='tf-pose',
+    name='tf_pose',
     version=__version__,
     description=
     'Deep Pose Estimation implemented using Tensorflow with Custom Architectures for fast inference.',

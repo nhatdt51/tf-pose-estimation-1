@@ -48,7 +48,7 @@ EXT = Extension('_pafprocess',
                 include_dirs=[np.get_include()])
 
 setuptools.setup(
-    name='tf_pose',
+    name='tf-pose',
     version=__version__,
     description=
     'Deep Pose Estimation implemented using Tensorflow with Custom Architectures for fast inference.',

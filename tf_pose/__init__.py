@@ -1,4 +1,4 @@
-__version__ = '0.10.1'
+__version__ = '0.1.1'
 __git_version__ = __version__
 
 from __future__ import absolute_import

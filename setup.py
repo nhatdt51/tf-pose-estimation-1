@@ -7,11 +7,12 @@ import subprocess
 import setuptools
 from setuptools import dist
 from distutils.core import setup, Extension
+from tf_pose import __version__
 dist.Distribution().fetch_build_eggs(['Cython', 'numpy'])
 
 import numpy as np
 
-_VERSION = '0.1.1'
+
 
 cwd = os.path.dirname(os.path.abspath(__file__))
 subprocess.check_output(["bash", "models/graph/cmu/download.sh"], cwd=cwd)
@@ -47,8 +48,8 @@ EXT = Extension('_pafprocess',
                 include_dirs=[np.get_include()])
 
 setuptools.setup(
-    name='tf-pose',
-    version=_VERSION,
+    name='tf_pose',
+    version=__version__,
     description=
     'Deep Pose Estimation implemented using Tensorflow with Custom Architectures for fast inference.',
     install_requires=REQUIRED_PACKAGES,

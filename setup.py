@@ -5,10 +5,8 @@ from __future__ import print_function
 import os
 import subprocess
 import setuptools
-from setuptools import dist
 from distutils.core import setup, Extension
 from tf_pose import __version__
-dist.Distribution().fetch_build_eggs(['Cython', 'numpy'])
 
 import numpy as np
 
@@ -48,6 +46,12 @@ EXT = Extension('_pafprocess',
                 include_dirs=[np.get_include()])
 
 setuptools.setup(
+     setup_requires=[
+        # Setuptools 18.0 properly handles Cython extensions.
+        'setuptools>=18.0',
+        'cython',
+        'numpy'
+    ],
     name='tf-pose',
     version=__version__,
     description=

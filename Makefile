@@ -55,16 +55,16 @@ format:
 
 lint: ## check style with pylint
 	pipenv run black --check .
-	pipenv run pytype activity_daily_score
+	pipenv run pytype tf_pose
 	pipenv run pipenv-setup check
-	pipenv run python -m pytest --pylint --pylint-error-types=EFCRW activity_daily_score
+	pipenv run python -m pytest --pylint --pylint-error-types=EFCRW tf_pose
 
 test: ## run tests quickly with the default Python
 	pipenv run python -m pytest --dead-fixtures
 	pipenv run python -m pytest -v -l tests
 
 coverage: ## check code coverage quickly with the default Python
-	coverage run --source activity_daily_score -m pytest
+	coverage run --source tf_pose -m pytest
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
@@ -74,17 +74,6 @@ bumpversion:
 	git config user.email "bumpversion@detalytics.com"
 	pipenv run bumpversion minor  --allow-dirty
 	git push origin master --tags
-
-docs: ## generate Sphinx HTML documentation, including API docs
-	rm -f docs/activity_daily_score.rst
-	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ activity_daily_score
-	$(MAKE) -C docs clean
-	$(MAKE) -C docs html
-	$(BROWSER) docs/_build/html/index.html
-
-servedocs: docs ## compile the docs watching for changes
-	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
 release: ## package and upload a release
 	pipenv run s3pypi --bucket pipy.detalytics.com --private

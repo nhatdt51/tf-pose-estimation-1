@@ -72,7 +72,7 @@ coverage: ## check code coverage quickly with the default Python
 bumpversion:
 	git config user.name "bumpvserion"
 	git config user.email "bumpversion@detalytics.com"
-	pipenv run bumpversion minor
+	pipenv run bumpversion minor  --allow-dirty
 	git push origin master --tags
 
 docs: ## generate Sphinx HTML documentation, including API docs
